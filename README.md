@@ -1,0 +1,4 @@
+HuffmanCoding
+=============
+
+huffman compression technique
