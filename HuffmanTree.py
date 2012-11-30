@@ -80,9 +80,5 @@ def h_tree(data):
         tree, sec_queue, freq = one_to_one(tree, sec_queue, freq)
     return tree[0]
 
-
-
-
-print h_tree(sys.argv[1])
 huff_bin(h_tree(sys.argv[1]), '')
 
