@@ -32,19 +32,22 @@ def two_sec(tree, sec_queue):
             break
     return tree, sec_queue
 
-def huff_bin(tree, encode):
+def huff_bin(tree, encode, data=None):
+    if data == None:
+        data = {}
     for i in tree:
         if isinstance(i, list) or isinstance(i, tuple):
             if tree.index(i) == 1:
                 old_encode = encode
                 encode += '0'
-                huff_bin(i, encode)
+                huff_bin(i, encode, data)
             if tree.index(i) == 2:
                 encode = old_encode
                 encode += '1'
-                huff_bin(i, encode)
+                huff_bin(i, encode, data)
         if isinstance(i, str):
-            print i, encode
+            data[i] = encode
+    return data
 
 def h_tree(data):
     tree = []
@@ -80,5 +83,11 @@ def h_tree(data):
         tree, sec_queue, freq = one_to_one(tree, sec_queue, freq)
     return tree[0]
 
-huff_bin(h_tree(sys.argv[1]), '')
+compress = huff_bin(h_tree(sys.argv[1]), '')
+encoding = ''
+for i in  sys.argv[1]:
+    if compress.has_key(i):
+        encoding += compress[i]
+
+print encoding 
 
