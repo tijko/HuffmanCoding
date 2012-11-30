@@ -1,4 +1,4 @@
 HuffmanCoding
 =============
 
-huffman compression technique
+huffman compression/decompression technique
