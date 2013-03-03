@@ -76,13 +76,18 @@ def h_tree(data):
             if len(freq) < 2:
                 break
         if len(sec_queue) > 1:
-            if freq[0][1] + freq[1][1] <= freq[0][1] + sec_queue[0][0] and freq[0][1] + freq[1][1] <= sec_queue[0][0] + sec_queue[1][0]:
+            if (freq[0][1] + freq[1][1] <= freq[0][1] + sec_queue[0][0] and  
+               freq[0][1] + freq[1][1] <= sec_queue[0][0] + sec_queue[1][0]):
                 tree, sec_queue, freq = two_freq(tree, sec_queue, freq)
-            elif freq[0][1] + sec_queue[0][0] < freq[0][1] + freq[1][1] and freq[0][1] + sec_queue[0][0] <= sec_queue[0][0] + sec_queue[1][0]:
+
+            elif (freq[0][1] + sec_queue[0][0] < freq[0][1] + freq[1][1] and 
+                  freq[0][1] + sec_queue[0][0] <= sec_queue[0][0] + sec_queue[1][0]):
                 tree, sec_queue, freq = one_to_one(tree, sec_queue, freq)
+
             elif sec_queue[0][0] + sec_queue[1][0] < freq[0][1] + freq[1][1] and \
                 sec_queue[0][0] + sec_queue[1][0] < sec_queue[0][0] + freq[0][1]:
                 tree, sec_queue = two_sec(tree, sec_queue)
+
     while len(sec_queue) > 1:
         if freq:
             if freq[0][1] + sec_queue[0][0] < sec_queue[0][0] + sec_queue[1][0]:
@@ -95,17 +100,20 @@ def h_tree(data):
         tree, sec_queue, freq = one_to_one(tree, sec_queue, freq)
     return tree[0]
 
-compress = huff_bin(h_tree(sys.argv[1]), '')
+
+data = sys.argv[1]
+compress = huff_bin(h_tree(data), '')
 encoding = ''
 stream = []
-for i in  sys.argv[1]:
+for i in  data:
     if compress.has_key(i):
         stream.append(compress[i])
         encoding += compress[i]
 
-no_com = ''.join([bin(ord(i)).strip('0b') for i in sys.argv[1]])
-print 'Encoded string without compression ...' 
-print no_com
-print 'Data stream ... %s' % stream 
-print 'Encoded string ... %s' % encoding 
-print 'Decoded string ... %s' % huff_decomp(h_tree(sys.argv[1]), stream)
+no_com = ''.join([bin(ord(i)).strip('0b') for i in data])
+print '\nEncoded string without compression...' 
+print no_com+'\n'
+print 'Encoded data stream... %s\n' % stream
+print 'Encoded string...' 
+print encoding + '\n'
+print 'Decoded string... %s\n' % huff_decomp(h_tree(data), stream)
