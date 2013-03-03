@@ -42,14 +42,16 @@ class HuffmanCoding(object):
         return self.tree[0]
 
 
-hc = HuffmanCoding()
-t = hc.construct_tree(sys.argv[1])
-compress = hc.huff_bin(t, '')
-encoding = ''
-stream = []
-for i in  sys.argv[1]:
-    if compress.has_key(i):
-        stream.append(compress[i])
-        encoding += compress[i]
+if __name__ == '__main__':
+    hc = HuffmanCoding()
+    data = sys.argv[1]
+    t = hc.construct_tree(data)
+    compress = hc.huff_bin(t, '')
+    encoding = ''
+    stream = []
+    for i in  sys.argv[1]:
+        if compress.has_key(i):
+            stream.append(compress[i])
+            encoding += compress[i]
 
-print encoding
+    print encoding
