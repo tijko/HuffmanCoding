@@ -102,6 +102,7 @@ def h_tree(data):
 
 
 data = sys.argv[1]
+print h_tree(data)
 compress = huff_bin(h_tree(data), '')
 encoding = ''
 stream = []
