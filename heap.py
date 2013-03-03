@@ -45,13 +45,14 @@ class HuffmanCoding(object):
 if __name__ == '__main__':
     hc = HuffmanCoding()
     data = sys.argv[1]
+    print '\nData to encode... %s\n' % data
     t = hc.construct_tree(data)
     compress = hc.huff_bin(t, '')
     encoding = ''
     stream = []
-    for i in  sys.argv[1]:
+    for i in  data:
         if compress.has_key(i):
             stream.append(compress[i])
             encoding += compress[i]
 
-    print encoding
+    print encoding + '\n'
