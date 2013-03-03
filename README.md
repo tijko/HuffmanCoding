@@ -9,7 +9,7 @@ guessed it, pythons heap module.
 
 While they both work great you can see how much cleaner the code is with the heap module.
 
-##Example:
+###Example:
 
     python Huffman.py 'this is an example of a huffman tree.'
 
