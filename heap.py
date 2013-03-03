@@ -31,14 +31,17 @@ class HuffmanCoding(object):
         while len(queue) > 1:
             q1 = heappop(queue)
             q2 = heappop(queue)
-            branch = (q1[0] + q2[0], q1[1] + q2[1],)
+            branch = (q1[0] + q2[0], q1, q2)
             heappush(queue, branch)
             if len(q1[1]) < 2:
                 self.tree.append([q1[0] + q2[0],q1, q2])
             elif len(q1[1]) > 1 and len(q2[1]) > 1:
-                self.tree.append([self.tree[0][0] + self.tree[1][0], self.tree[0], self.tree[1]])
+                self.tree.append([q1[0] + q2[0], q1, q2])
                 self.tree.pop(0)
-                self.tree.pop(0) 
+                self.tree.pop(0)
+            else:
+                self.tree.append([q1[0] + q2[0], q1, q2])
+                self.tree.pop(0)
         return self.tree[0]
 
 
@@ -54,5 +57,5 @@ if __name__ == '__main__':
         if compress.has_key(i):
             stream.append(compress[i])
             encoding += compress[i]
-
+    print ''
     print encoding + '\n'
