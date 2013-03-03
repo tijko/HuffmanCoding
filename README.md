@@ -4,10 +4,10 @@ HuffmanCoding
 Huffman Coding is an algorithm technique for compression/decompression.
 
 This is my take on it in python.  In the Huffman.py file I do the encoding with out
-python's heap module and in the heap.py file I get the encoding done with, yup you
-guessed it, pythons heap module.
+python's heapq module and in the HuffHeapq.py file I get the encoding done with, yup you
+guessed it, pythons heapq module.
 
-While they both work great you can see how much cleaner the code is with the heap module.
+While they both work great you can see how much cleaner the code is with the heapq module.
 
 ###Example:
 
