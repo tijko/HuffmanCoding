@@ -1,6 +1,9 @@
+#!/usr/bin/env python
+
 from heapq import heappop, heappush, heapify
 from collections import Counter
 import sys
+
 
 class HuffmanCoding(object):
 
@@ -59,5 +62,4 @@ if __name__ == '__main__':
         if compress.has_key(i):
             stream.append(compress[i])
             encoding += compress[i]
-    print ''
-    print encoding + '\n'
+    print '\nEncoded data... \n%s\n' % encoding
