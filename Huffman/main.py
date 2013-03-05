@@ -79,7 +79,7 @@ def main(options):
             return
         decode = ''
         for i in stream:
-            decode = decode + ''.join([v[0] for v in datamap.viewitems() if i in v])
+            decode = decode + ''.join([v[0] for v in datamap.items() if i in v])
         print '\nDecoded data...\n%s'% (decode + '\n')
         if options.write:
             with open(os.environ['HOME'] + '/decode.txt', 'w') as f:
