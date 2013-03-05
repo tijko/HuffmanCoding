@@ -41,6 +41,7 @@ def main(options):
                 if compress.has_key(i):
                     stream.append(compress[i])
                     encoding += compress[i]
+            msg = msg + '\nKey-Map... \n%s\n' % str(compress)
             msg = msg + '\nEncoded data stream... \n%s\n' % str(stream)
             msg = msg + '\nEncoded string...\n%s\n' % encoding
             print msg
@@ -54,6 +55,7 @@ def main(options):
                 if compress.has_key(i):
                     stream.append(compress[i])
                     encoding += compress[i]
+            msg = msg + '\nKey-Map... \n%s\n' % str(compress)
             msg = msg + '\nEncoded data stream... \n%s\n' % str(stream)
             msg = msg + '\nEncoded string...\n%s\n' % encoding
             print msg
