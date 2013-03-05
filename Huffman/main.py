@@ -77,10 +77,8 @@ def main(options):
         except (SyntaxError, ValueError) as e:
             print 'Error: check the data stream --'
             return
-        decode = ''
-        for i in stream:
-            decode = decode + ''.join([v[0] for v in datamap.items() if i in v])
-        print '\nDecoded data...\n%s'% (decode + '\n')
+        datamap = {v:k for k,v in datamap.items()}
+        print '\nDecoded data...\n%s'% (''.join([datamap[i] for i in stream if i in datamap]) + '\n')
         if options.write:
             with open(os.environ['HOME'] + '/decode.txt', 'w') as f:
                 f.write(decode)            
