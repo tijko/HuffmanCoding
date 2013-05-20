@@ -47,6 +47,8 @@ def main(options):
             print msg
         if choice[0].lower() == 'n':
             data = raw_input('Data to compress: ')
+            if not data:
+                return
             msg = '\n' + 'Huffman Tree...\n%s\n' % str(h_tree(data))
             compress = huff_bin(h_tree(data), '')
             stream = []
