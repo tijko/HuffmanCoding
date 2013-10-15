@@ -40,8 +40,7 @@ class HuffmanCoding(object):
                 self.tree.append([q1[0] + q2[0],q1, q2])
             elif len(q1[1]) > 1 and len(q2[1]) > 1:
                 self.tree.append([q1[0] + q2[0], q1, q2])
-                self.tree.pop(0)
-                self.tree.pop(0)
+                self.tree = self.tree[2:]
             else:
                 self.tree.append([q1[0] + q2[0], q1, q2])
                 self.tree.pop(0)
