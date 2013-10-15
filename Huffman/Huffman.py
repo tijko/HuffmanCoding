@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 from collections import Counter
 
 
@@ -7,7 +10,6 @@ def two_freq(tree, sec_queue, freq):
     freq = freq[2:]
     return tree, sec_queue, freq
 
-
 def one_to_one(tree, sec_queue, freq):
     for i in tree:
         if i == sec_queue[0][1]:
@@ -16,9 +18,8 @@ def one_to_one(tree, sec_queue, freq):
             sec_queue.append([freq[0][1] + sec_queue[0][0], tree[hold]])
             sec_queue = sec_queue[1:]
             freq = freq[1:]
-            break
+            return tree, sec_queue, freq
     return tree, sec_queue, freq
-
 
 def two_sec(tree, sec_queue):
     for i in tree:  
@@ -31,9 +32,8 @@ def two_sec(tree, sec_queue):
                     tree.remove(j)
                     break
             sec_queue = sec_queue[2:]
-            break
+            return tree, sec_queue
     return tree, sec_queue
-
 
 def huff_bin(tree, encode, data=None):
     if data == None:
@@ -52,7 +52,6 @@ def huff_bin(tree, encode, data=None):
             data[i] = encode
     return data
 
-
 def huff_decomp(tree, encoding):
     data = ''
     for i in encoding:
@@ -64,7 +63,6 @@ def huff_decomp(tree, encoding):
                 t = t[2]
         data += t[0]
     return data
-
 
 def h_tree(data):
     tree = []
