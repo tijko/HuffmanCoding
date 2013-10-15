@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# -*- coding: utf-8 -*-
 
 import os
 import ast
@@ -37,7 +38,7 @@ def main(options):
             compress = huff_bin(h_tree(data), '')
             stream = []
             encoding = ''
-            for i in  data:
+            for i in data:
                 if compress.has_key(i):
                     stream.append(compress[i])
                     encoding += compress[i]
@@ -53,7 +54,7 @@ def main(options):
             compress = huff_bin(h_tree(data), '')
             stream = []
             encoding = ''
-            for i in  data:
+            for i in data:
                 if compress.has_key(i):
                     stream.append(compress[i])
                     encoding += compress[i]
