@@ -25,12 +25,13 @@ class HuffmanCoding(object):
                     encode += '1'
                     self.huff_bin(i, encode, data)
             if isinstance(i, str):
-                data[i] = encode
+                data[i] = encode        
         return data
 
     def construct_tree(self, data):
         char_freq = Counter(data)
-        queue = [(char_freq[i],i,) for i in char_freq]
+        queue = char_freq.items() 
+        queue = [(v, k,) for k,v in char_freq.items()]
         heapify(queue)
         while len(queue) > 1:
             q1 = heappop(queue)
@@ -64,6 +65,5 @@ if __name__ == '__main__':
                 stream.append(compress.get(i))
                 encoding += compress.get(i)
         print '\nEncoded data... \n%s\n' % encoding
-        print 'Stream: %s' % str(stream)
     else:
         print 'You need to provide some data to encode!'
