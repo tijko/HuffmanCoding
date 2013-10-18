@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# -*- coding: utf-8 -*-
 
 from heapq import heappop, heappush, heapify
 from collections import Counter
@@ -58,10 +59,11 @@ if __name__ == '__main__':
         compress = hc.huff_bin(t, '')
         encoding = ''
         stream = []
-        for i in  data:
-            if compress.has_key(i):
-                stream.append(compress[i])
-                encoding += compress[i]
+        for i in data:
+            if compress.get(i):
+                stream.append(compress.get(i))
+                encoding += compress.get(i)
         print '\nEncoded data... \n%s\n' % encoding
+        print 'Stream: %s' % str(stream)
     else:
         print 'You need to provide some data to encode!'
