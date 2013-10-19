@@ -47,8 +47,8 @@ class HuffmanCoding(object):
                 self.tree.append([q1[0] + q2[0], q1, q2])
                 self.tree.pop(0)
         print 'Huffman Tree...'
-        print '%s\n' % str(self.tree[0])
-        return self.tree[0]
+        print '%s\n' % str(self.tree[-1])
+        return self.tree[-1]
 
 
 if __name__ == '__main__':
