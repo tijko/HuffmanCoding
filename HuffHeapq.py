@@ -15,7 +15,7 @@ class HuffmanCoding(object):
         if data == None:
             data = {}
         for i in tree:
-            if isinstance(i, list) or isinstance(i, tuple):
+            if isinstance(i, (tuple, list)):
                 if tree.index(i) == 1:
                     old_encode = encode
                     encode += '0'
