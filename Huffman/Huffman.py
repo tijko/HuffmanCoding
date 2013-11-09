@@ -6,7 +6,8 @@ from collections import Counter
 
 def two_freq(tree, sec_queue, freq):
     tree.append([freq[0][1] + freq[1][1], freq[0], freq[1]])
-    sec_queue.append([freq[0][1] + freq[1][1], [freq[0][1] + freq[1][1], freq[0], freq[1]]])    
+    sec_queue.append([freq[0][1] + freq[1][1], 
+                     [freq[0][1] + freq[1][1], freq[0], freq[1]]])    
     freq = freq[2:]
     return tree, sec_queue, freq
 
@@ -14,7 +15,8 @@ def one_to_one(tree, sec_queue, freq):
     for i in tree:
         if i == sec_queue[0][1]:
             hold = tree.index(i)
-            tree[tree.index(i)] = [sec_queue[0][0] + freq[0][1], sec_queue[0][1], freq[0]]
+            tree[tree.index(i)] = [sec_queue[0][0] + freq[0][1], 
+                                   sec_queue[0][1], freq[0]]
             sec_queue.append([freq[0][1] + sec_queue[0][0], tree[hold]])
             sec_queue = sec_queue[1:]
             freq = freq[1:]
@@ -25,7 +27,8 @@ def two_sec(tree, sec_queue):
     for i in tree:  
         if i == sec_queue[0][1]:
             hold = tree.index(i)
-            tree[tree.index(i)] = [sec_queue[0][0] + sec_queue[1][0], sec_queue[0][1], sec_queue[1][1]]
+            tree[tree.index(i)] = [sec_queue[0][0] + sec_queue[1][0], 
+                                   sec_queue[0][1], sec_queue[1][1]]
             sec_queue.append([sec_queue[0][0] + sec_queue[1][0], tree[hold]])
             for j in tree:
                 if j == sec_queue[1][1]:
@@ -68,7 +71,8 @@ def h_tree(data):
     tree = []
     sec_queue = []
     counts = Counter(data)
-    freq = sorted([(i[0], i[1],) for i in zip(counts.keys(), counts.values())], key=lambda x: x[1])
+    freq = sorted([(i[0], i[1],) for i in 
+                   zip(counts.keys(), counts.values())], key=lambda x: x[1])
     tree, sec_queue, freq = two_freq(tree, sec_queue, freq)
     while len(freq) > 1:
         if len(sec_queue) < 2:
